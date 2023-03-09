@@ -180,7 +180,7 @@ GRASS GIS code used for data preprocessing is presented in Listing \ref{lst01}. 
 r.info -r LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1
 # checking the selected random band
 gdalinfo LC08_L2SP_189056_20131220_20200912_02_T1_SR_B7.TIF
-# importing the image subset with 7 Landsat bands and display the raster map (polinalemenkova)
+# importing the image subset with 7 Landsat bands and display the raster map
 r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B1.TIF out=L8_2013_01
 r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B2.TIF out=L8_2013_02
 r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B3.TIF out=L8_2013_03
@@ -213,106 +213,159 @@ i.landsat.toar input=lsat8_2013. output=lsat8_2013_toar. sensor=oli8 \
     product_date=2013-12-20 gain=HHHLHLHHL
 \end{lstlisting}
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script - 2 for computing the NDVI,style=mystyle,label={lst01}]
-# Calculation of VI
-# 1. Calculation of NDVI
+%------------------------->
+\subsection{Normalized Difference Vegetation Index (NDVI)}
+
+\begin{verbatim}
+	NDVI = (NIR - Red) / (NIR + Red)
+\end{verbatim}
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDVI,style=mystyle,label={lst01}]
 g.region raster=lsat8_2013_toar.4 -p
 i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=ndvi \
        output=lsat8_2013.ndvi --overwrite
 r.colors lsat8_2013.ndvi color=ndvi
-# displaying the map
 d.mon wx0
+g.region raster=lsat8_2013_toar.4 -p
 d.rast lsat8_2013.ndvi
-d.legend raster=lsat8_2013.ndvi range=-1,1 title=NDVI title_fontsize=12 font=Helvetica fontsize=10 -t -b border_color=gray thin=8 -s label_step=0.1 -d
-d.out.file output=Nigeria_NDVI_2013 format=jpg --overwrite
-\end{lstlisting}
+d.legend raster=lsat8_2013.ndvi range=-1,1 title="NDVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
+d.out.file output=Nigeria_NDVI_2013 format=jpg --overwrite\end{lstlisting}
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script - 2 for computing the ARVI,style=mystyle,label={lst01}]
-# Calculation of ARVI
-# arvi( redchan, nirchan, bluechan )
-# ARVI: Atmospheric Resistant Vegetation Index = (NIR - (2.0*Red - Blue)) / ( NIR + (2.0*Red - Blue))
+%------------------------->
+\subsection{Atmospherically Resistant Vegetation Index (ARVI)}
+
+\begin{verbatim}
+	ARVI = (NIR - (2.0*Red - Blue)) / ( NIR + (2.0*Red - Blue))
+\end{verbatim}
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the ARVI,style=mystyle,label={lst01}]
 g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 \
        viname=arvi output=lsat8_2013.arvi --overwrite
-d.mon wx2
-#r.colors lsat8_2013.arvi color=haxby
-r.colors lsat8_2013.arvi color=bcyr
-# r.colors --help
+r.colors lsat8_2013.arvi color=bcyr -e
+d.mon wx0
 d.rast lsat8_2013.arvi
-# saving the file
+d.legend raster=lsat8_2013.arvi range=-0.7,0.3 title="ARVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
 d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
 \end{lstlisting}
 
-\subsection{Global Environment Monitoring Index }
+%------------------------->
+\subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
 \begin{verbatim}
-n = ( 2*( NIR^2 - Red^2) + 1.5*NIR + 0.5*Red ) / ( NIR + Red + 0.5 )
-\end{verbatim}
+	GARI = ( NIR - (Green - (Blue - Red))) / ( NIR + (Green - (Blue - Red)))
+\end{verbatim} 
 
-\subsection{IPVI: Infrared Percentage Vegetation Index}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI,style=mystyle,label={lst01}]
+# GARI = (nirchan - (2.0*redchan - bluechan)) / ( nirchan + (2.0*redchan - bluechan))
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 \
+     nir=lsat8_2013_toar.5 viname=gari output=lsat8_2013.gari --overwrite
+r.colors lsat8_2013.gari color=rainbow -e
+d.mon wx1
+d.rast lsat8_2013.gari
+d.legend raster=lsat8_2013.gari range=-0.5,0.7 title="GARI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GARI_2013 format=jpg --overwrite
+\end{lstlisting}
 
-ipvi( Red, NIR )
- 
+%------------------------->
+\subsection{Green Vegetation Index (GVI)}
+
 \begin{verbatim}
-IPVI = NIR / (NIR + Red)
+	GVI = ( -0.2848 * Blue - 0.2435 * Green - 0.5436 * Red + 0.7243 * NIR + 0.0840 * SWIR1- 0.1800 * SWI2)
 \end{verbatim}
 
-%----------- subsection ----------->
-\subsection{Subsection}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GVI,style=mystyle,label={lst01}]
+g.region raster=lsat8_2013_toar.3 -p
+i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 band5=lsat8_2013_toar.6 band7=lsat8_2013_toar.7 viname=gvi output=lsat8_2013.gvi --overwrite
+r.colors.stddev lsat8_2013.gvi
+d.mon wx0
+d.rast lsat8_2013.gvi
+d.legend raster=lsat8_2013.gvi range=-1,0.7 title="GVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_GVI_2013 format=jpg --overwrite
+\end{lstlisting}
 
-%----------- subsection ----------->
-\subsection{Subsection}
+%------------------------->
+\subsection{Difference Vegetation Index (DVI)}
 
+\begin{verbatim}
+	DVI = (NIR - Red)
+\end{verbatim}
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the DVI,style=mystyle,label={lst01}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=dvi output=lsat8_2013.dvi --overwrite
+r.colors lsat8_2013.dvi color=bgyr -e
+d.mon wx0
+d.rast lsat8_2013.dvi
+d.legend raster=lsat8_2013.dvi range=-0.1,0.3 title="DVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
+d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+%------------------------->
+\subsection{Perpendicular Vegetation Index (PVI)}
+
+\begin{verbatim}
+	PVI = sin(a)NIR-cos(a)Red
+\end{verbatim} 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the PVI,style=mystyle,label={lst01}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=pvi output=lsat8_2013.pvi --overwrite
+r.colors lsat8_2013.pvi color=bgyr -e
+d.mon wx0
+d.rast lsat8_2013.pvi
+d.legend raster=lsat8_2013.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
+d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
 %----------- subsection ----------->
-\subsection{NDVI}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7cm]{Fig_04a.jpg}
-		\caption{2013}
+			\includegraphics[width=7.5cm]{Fig_04a.jpg}
+		\caption{2013: NDVI}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7cm]{Fig_04a.jpg}
-		\caption{2015}
+			\includegraphics[width=7.5cm]{Fig_04b.jpg}
+		\caption{2013: ARVI}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7cm]{Fig_04a.jpg}
-		\caption{2018}
+			\includegraphics[width=7cm]{Fig_04c.jpg}
+		\caption{2013: GARI}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7cm]{Fig_04a.jpg}
-		\caption{2020}
+			\includegraphics[width=7cm]{Fig_04d.jpg}
+		\caption{2013: GVI}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=7cm]{Fig_04a.jpg}
-		\caption{2021}
+		\includegraphics[width=7cm]{Fig_04e.jpg}
+		\caption{2013: DVI}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=7cm]{Fig_04a.jpg}
-		\caption{2022}
+		\includegraphics[width=7cm]{Fig_04f.jpg}
+		\caption{2013: PVI}
 	\end{subfigure}%
-}\caption{NDVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for six years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2018/02/21, (\textbf{d}) 2020/01/22, (\textbf{e}) 2021/12/18, (\textbf{f}) 2022/12/29.}\label{fig:03}
+}\caption{NDVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for 2013 years: (\textbf{a}) NDVI, (\textbf{b}) ARVI, (\textbf{c}) GARI, (\textbf{d}) GVI, (\textbf{e}) DVI, (\textbf{f}) PVI.}\label{fig:03}
 \end{figure}
 
 %----------- subsection ----------->
-\subsection{ARVI}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
