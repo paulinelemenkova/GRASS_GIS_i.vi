@@ -66,10 +66,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Using GRASS GIS for Computing Vegetation Indices from the Satellite Images for Environmental Monitoring of Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria}
+\Title{GRASS GIS for Computing Vegetation Indices from the Satellite Images for Monitoring Landscapes of Mangrove Forests in the Niger Delta, Nigeria}
 
 % MDPI internal command: Title for citation in the left column along the Southwestern Coast of Nigeria
-\TitleCitation{Using GRASS GIS for Computing Vegetation Indices from the Satellite Images for Environmental Monitoring of Mangrove Forests in the Coastal Landscapes of Niger Delta, Nigeria}
+\TitleCitation{GRASS GIS for Computing Vegetation Indices from the Satellite Images for Monitoring Landscapes of Mangrove Forests in the Niger Delta, Nigeria}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
@@ -195,7 +195,7 @@ r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_TRAD.TIF out=L8_2013_11 # 
 # listing the files
 g.list rast
 # preprocessing:
-# copying the Landsat bands to match the input structure of the i.landsat.toar
+# copying Landsat bands to match the input structure of the i.landsat.toar
 g.copy raster=L8_2013_01,lsat8_2013.1
 g.copy raster=L8_2013_02,lsat8_2013.2
 g.copy raster=L8_2013_03,lsat8_2013.3
@@ -216,9 +216,10 @@ i.landsat.toar input=lsat8_2013. output=lsat8_2013_toar. sensor=oli8 \
 %------------------------->
 \subsection{Normalized Difference Vegetation Index (NDVI)}
 
-\begin{verbatim}
+The NDVI is based on the formula applied since 1979 \cite{TUCKER1979237,RONDEAUX199695,DATT1998111}:
+\begin{equation}
 	NDVI = (NIR - Red) / (NIR + Red)
-\end{verbatim}
+\end{equation}
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDVI,style=mystyle,label={lst01}]
 g.region raster=lsat8_2013_toar.4 -p
@@ -234,16 +235,18 @@ d.out.file output=Nigeria_NDVI_2013 format=jpg --overwrite\end{lstlisting}
 %------------------------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
-\begin{verbatim}
+The computation of ARVI is based on the formula developed by \cite{134076,HUETE1997440}:
+
+\begin{equation}
 	ARVI = (NIR - (2.0*Red - Blue)) / ( NIR + (2.0*Red - Blue))
-\end{verbatim}
+\end{equation}
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the ARVI,style=mystyle,label={lst01}]
 g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 \
        viname=arvi output=lsat8_2013.arvi --overwrite
 r.colors lsat8_2013.arvi color=bcyr -e
-d.mon wx0
+d.mon wx1
 d.rast lsat8_2013.arvi
 d.legend raster=lsat8_2013.arvi range=-0.7,0.3 title="ARVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
 d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
@@ -252,9 +255,11 @@ d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
-\begin{verbatim}
+The computation of GARI is based on the formula developed by \cite{GITELSON1996289}:
+
+\begin{equation}
 	GARI = ( NIR - (Green - (Blue - Red))) / ( NIR + (Green - (Blue - Red)))
-\end{verbatim} 
+\end{equation} 
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI,style=mystyle,label={lst01}]
 # GARI = (nirchan - (2.0*redchan - bluechan)) / ( nirchan + (2.0*redchan - bluechan))
@@ -262,7 +267,7 @@ g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 \
      nir=lsat8_2013_toar.5 viname=gari output=lsat8_2013.gari --overwrite
 r.colors lsat8_2013.gari color=rainbow -e
-d.mon wx1
+d.mon wx2
 d.rast lsat8_2013.gari
 d.legend raster=lsat8_2013.gari range=-0.5,0.7 title="GARI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
 d.out.file output=Nigeria_GARI_2013 format=jpg --overwrite
@@ -271,15 +276,20 @@ d.out.file output=Nigeria_GARI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Green Vegetation Index (GVI)}
 
-\begin{verbatim}
-	GVI = ( -0.2848 * Blue - 0.2435 * Green - 0.5436 * Red + 0.7243 * NIR + 0.0840 * SWIR1- 0.1800 * SWI2)
-\end{verbatim}
+The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the formula developed by \cite{4157507}:
+
+\begin{equation}
+\begin{split}
+	GVI = ( -0.2848 * Blue - 0.2435 * Green - 0.5436 * Red + \\
+	0.7243 * NIR + 0.0840 * SWIR1- 0.1800 * SWI2)
+\end{split}
+\end{equation}
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GVI,style=mystyle,label={lst01}]
 g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 band5=lsat8_2013_toar.6 band7=lsat8_2013_toar.7 viname=gvi output=lsat8_2013.gvi --overwrite
 r.colors.stddev lsat8_2013.gvi
-d.mon wx0
+d.mon wx3
 d.rast lsat8_2013.gvi
 d.legend raster=lsat8_2013.gvi range=-1,0.7 title="GVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
 d.out.file output=Nigeria_GVI_2013 format=jpg --overwrite
@@ -288,15 +298,16 @@ d.out.file output=Nigeria_GVI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Difference Vegetation Index (DVI)}
 
-\begin{verbatim}
+The use of PVI is based on the ratio between the NIR and Red channels \cite{Naji2018}:
+\begin{equation}
 	DVI = (NIR - Red)
-\end{verbatim}
+\end{equation}
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the DVI,style=mystyle,label={lst01}]
 g.region raster=lsat8_2013_toar.1 -p
 i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=dvi output=lsat8_2013.dvi --overwrite
 r.colors lsat8_2013.dvi color=bgyr -e
-d.mon wx0
+d.mon wx4
 d.rast lsat8_2013.dvi
 d.legend raster=lsat8_2013.dvi range=-0.1,0.3 title="DVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
 d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
@@ -305,15 +316,17 @@ d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Perpendicular Vegetation Index (PVI)}
 
-\begin{verbatim}
+The use of PVI is based on the formula that includes the sine and cosine of the NIR and Red channels \cite{PERRY1984169}:
+
+\begin{equation}
 	PVI = sin(a)NIR-cos(a)Red
-\end{verbatim} 
+\end{equation} 
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the PVI,style=mystyle,label={lst01}]
 g.region raster=lsat8_2013_toar.1 -p
 i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=pvi output=lsat8_2013.pvi --overwrite
 r.colors lsat8_2013.pvi color=bgyr -e
-d.mon wx0
+d.mon wx5
 d.rast lsat8_2013.pvi
 d.legend raster=lsat8_2013.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
 d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
