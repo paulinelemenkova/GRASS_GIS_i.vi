@@ -66,10 +66,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{GRASS GIS for Computing Vegetation Indices from the Satellite Images for Monitoring Landscapes of Mangrove Forests in the Niger Delta, Nigeria}
+\Title{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Niger Delta, Nigeria}
 
 % MDPI internal command: Title for citation in the left column along the Southwestern Coast of Nigeria
-\TitleCitation{GRASS GIS for Computing Vegetation Indices from the Satellite Images for Monitoring Landscapes of Mangrove Forests in the Niger Delta, Nigeria}
+\TitleCitation{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Landscapes of Mangrove Forests in the Niger Delta, Nigeria}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
@@ -131,43 +131,31 @@ The image processing has been performed using the GRASS GIS, version 8.2.1, \hre
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.40\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.87\textwidth]{Fig_03a.jpg}
+			\includegraphics[width=7.5cm]{Fig_03a.jpg}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03b.jpg}
+			\includegraphics[width=7.5cm]{Fig_03b.jpg}
 		\caption{2015}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03c.jpg}
-		\caption{2018}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.40\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.87\textwidth]{Fig_03d.jpg}
-		\caption{2020}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03e.jpg}
+			\includegraphics[width=7.5cm]{Fig_03e.jpg}
 		\caption{2021}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03f.jpg}
+			\includegraphics[width=7.5cm]{Fig_03f.jpg}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{Landsat 8-9 OLI/TIRS images of Niger Delta in natural colour RGB values showing mangrove forests of the  for six years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2018/02/21, (\textbf{d}) 2020/01/22, (\textbf{e}) 2021/12/18, (\textbf{f}) 2022/12/29.}\label{fig:03}
+}\caption{Landsat 8-9 OLI/TIRS images of Niger Delta in natural colour RGB values for six years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2021/12/18, (\textbf{d}) 2022/12/29}\label{fig:03}
 \end{figure}
-
-%----------- subsection ----------->
 
 %----------- subsection ----------->
 \subsection{Data preprocessing}
@@ -336,96 +324,190 @@ d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
 \section{Results}
 
 %----------- subsection ----------->
+\subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_04a.jpg}
-		\caption{2013: NDVI}
+			\includegraphics[width=7.5cm]{Nigeria_ARVI_2013}
+		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_04b.jpg}
-		\caption{2013: ARVI}
+			\includegraphics[width=7.5cm]{Nigeria_ARVI_2015}
+		\caption{2015}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7cm]{Fig_04c.jpg}
-		\caption{2013: GARI}
+			\includegraphics[width=7.5cm]{Nigeria_ARVI_2021}
+		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7cm]{Fig_04d.jpg}
-		\caption{2013: GVI}
+			\includegraphics[width=7.5cm]{Nigeria_ARVI_2022}
+		\caption{2022}
 	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-		\includegraphics[width=7cm]{Fig_04e.jpg}
-		\caption{2013: DVI}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-		\includegraphics[width=7cm]{Fig_04f.jpg}
-		\caption{2013: PVI}
-	\end{subfigure}%
-}\caption{NDVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for 2013 years: (\textbf{a}) NDVI, (\textbf{b}) ARVI, (\textbf{c}) GARI, (\textbf{d}) GVI, (\textbf{e}) DVI, (\textbf{f}) PVI.}\label{fig:03}
+}\caption{ARVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for six years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
 \end{figure}
 
 %----------- subsection ----------->
+\subsection{Normalized Difference Vegetation Index (NDVI)}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.40\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.87\textwidth]{Fig_05a.jpg}
+			\includegraphics[width=7.5cm]{Nigeria_NDVI_2013}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03b.jpg}
+			\includegraphics[width=7.5cm]{Nigeria_NDVI_2015}
 		\caption{2015}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03c.jpg}
-		\caption{2018}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.40\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.87\textwidth]{Fig_03d.jpg}
-		\caption{2020}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03e.jpg}
+			\includegraphics[width=7.5cm]{Nigeria_NDVI_2021}
 		\caption{2021}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.87\textwidth]{Fig_03f.jpg}
+			\includegraphics[width=7.5cm]{Nigeria_NDVI_2022}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{ARVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for six years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2018/02/21, (\textbf{d}) 2020/01/22, (\textbf{e}) 2021/12/18, (\textbf{f}) 2022/12/29.}\label{fig:03}
+}\caption{NDVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for six years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
 \end{figure}
 
 %----------- subsection ----------->
-\subsection{GARI}
+\subsection{Difference Vegetation Index (DVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_DVI_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_DVI_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_DVI_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_DVI_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{DVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for six years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
 
 %----------- subsection ----------->
-\subsection{GEMI}
+\subsection{Perpendicular Vegetation Index (PVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_PVI_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_PVI_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_PVI_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_PVI_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{PVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
 
 %----------- subsection ----------->
-\subsection{Subsection}
+\subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GARI_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GARI_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GARI_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GARI_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{GARI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for six years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
+
+\subsection{Green Vegetation Index (GVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GVI_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GVI_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GVI_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_GVI_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{GVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for six years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
+
 
 %----------- subsection ----------->
 \subsection{Subsection}
@@ -456,8 +538,15 @@ The following abbreviations are used in this manuscript:\\
 
 \noindent 
 \begin{tabular}{@{}ll}
+ARVI & Atmospherically Resistant Vegetation Index \\
+DVI & Difference Vegetation Index \\
+GARI & Green Atmospherically Resistant Vegetation Index \\
+GVI & Green Vegetation Index \\
 GMT & Generic Mapping Tools\\
-GRASS GIS & Geographic Resources Analysis Support System Geographic Information System
+GRASS GIS & Geographic Resources Analysis Support System Geographic Information System \\
+Landsat 8-9 OLI/TIRS & Landsat 8-9 Operational Land Imager and Thermal Infrared \\
+NDVI & Normalized Difference Vegetation Index \\
+PVI & Perpendicular Vegetation Index \\
 \end{tabular}
 }
 
