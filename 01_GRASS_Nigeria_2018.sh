@@ -96,8 +96,7 @@ d.out.file output=Nigeria_DVI_2018 format=jpg --overwrite
 # 6. Calculation of PVI (Perpendicular Vegetation Index)
 g.region raster=lsat8_2018_toar.1 -p
 i.vi red=lsat8_2018_toar.4 nir=lsat8_2018_toar.5 viname=pvi output=lsat8_2018.pvi --overwrite
-#r.colors lsat8_2018.pvi color=byr -e
-r.colors lsat8_2018.pvi color=bgyr -e
+r.colors lsat8_2018.pvi color=byr -e
 # r.colors --help
 d.mon wx0
 d.rast lsat8_2018.pvi
