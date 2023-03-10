@@ -103,7 +103,62 @@ d.mon wx0
 d.rast lsat8_2021.pvi
 d.legend raster=lsat8_2021.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
 d.out.file output=Nigeria_PVI_2021 format=jpg --overwrite
+
+# 7. Calculation of GEMI: Global Environmental Monitoring Index
+g.region raster=lsat8_2021_toar.1 -p
+i.vi red=lsat8_2021_toar.4 nir=lsat8_2021_toar.5 viname=gemi output=lsat8_2021.gemi --overwrite
+r.colors lsat8_2021.gemi color=roygbiv -e
+# r.colors --help
+d.mon wx0
+d.rast lsat8_2021.gemi
+d.legend raster=lsat8_2021.gemi range=-0.5,1.0 title="GEMI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+# d.erase
+d.out.file output=Nigeria_GEMI_2021 format=jpg --overwrite
+
+# 8. Calculation of NDWI: Normalized Difference Water Index
+g.region raster=lsat8_2021_toar.1 -p
+i.vi green=lsat8_2021_toar.3 nir=lsat8_2021_toar.5 viname=ndwi output=lsat8_2021.ndwi --overwrite
+r.colors lsat8_2021.ndwi color=viridis -e
+# r.colors --help
+d.mon wx0
+d.rast lsat8_2021.ndwi
+d.legend raster=lsat8_2021.ndwi range=-1.0,0.5 title="NDWI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+# d.erase
+d.out.file output=Nigeria_NDWI_2021 format=jpg --overwrite
 #
+# 9. Calculation of MSAVI2: second Modified Soil Adjusted Vegetation Index
+g.region raster=lsat8_2021_toar.1 -p
+i.vi red=lsat8_2021_toar.4 nir=lsat8_2021_toar.5 viname=msavi2 output=lsat8_2021.msavi2 --overwrite
+r.colors lsat8_2021.msavi2 color=soilmoisture -e
+# r.colors --help
+d.mon wx0
+d.rast lsat8_2021.msavi2
+d.legend raster=lsat8_2021.msavi2 range=-1.0,0.5 title="MSAVI2" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+# d.erase
+d.out.file output=Nigeria_MSAVI2_2021 format=jpg --overwrite
+#
+# 10. Calculation of IPVI: Infrared Percentage Vegetation Index
+g.region raster=lsat8_2021_toar.1 -p
+i.vi red=lsat8_2021_toar.4 nir=lsat8_2021_toar.5 viname=ipvi output=lsat8_2021.ipvi --overwrite
+r.colors lsat8_2021.ipvi color=haxby -e
+# r.colors --help
+d.mon wx0
+d.rast lsat8_2021.ipvi
+d.legend raster=lsat8_2021.ipvi range=-1.0,1.0 title="IPVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+# d.erase
+d.out.file output=Nigeria_IPVI_2021 format=jpg --overwrite
+#
+# 11. Calculation of EVI: Enhanced Vegetation Index
+g.region raster=lsat8_2021_toar.1 -p
+i.vi blue=lsat8_2021_toar.2 red=lsat8_2021_toar.4 nir=lsat8_2021_toar.5 viname=evi output=lsat8_2021.evi --overwrite
+r.colors lsat8_2021.evi color=elevation -e
+# r.colors --help
+d.mon wx0
+d.rast lsat8_2021.evi
+d.legend raster=lsat8_2021.evi range=-1.0,1.0 title="EVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+# d.erase
+d.out.file output=Nigeria_EVI_2021 format=jpg --overwrite
+
 # RGB colour composites
 # False composite 5-4-3
 r.composite blue=L8_2021_05 green=L8_2021_04 red=L8_2021_03 output=L8_2021_RGB --overwrite
