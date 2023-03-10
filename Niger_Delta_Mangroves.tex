@@ -337,6 +337,64 @@ The original formula of the NDWI has been developed by \cite{McFeeters} as a rat
 NDWI = \frac{green - NIR}{green + NIR}
 \end{equation} 
 
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDWI,style=mystyle,label={lst01}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi green=lsat8_2013_toar.3 nir=lsat8_2013_toar.5 viname=ndwi output=lsat8_2013.ndwi --overwrite
+r.colors lsat8_2013.ndwi color=viridis -e
+d.mon wx0
+d.rast lsat8_2013.ndwi
+d.legend raster=lsat8_2013.ndwi range=-1.0,0.5 title="NDWI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_NDWI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
+
+\begin{equation}
+	MSAVI2 = \frac{1}{2}*\Bigl(2*NIR+1-\sqrt{(2*NIR+1)^2-8*(NIR-red)}\Bigr)
+\end{equation} 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the MSAVI2,style=mystyle,label={lst01}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=msavi2 output=lsat8_2013.msavi2 --overwrite
+r.colors lsat8_2013.msavi2 color=soilmoisture -e
+d.mon wx0
+d.rast lsat8_2013.msavi2
+d.legend raster=lsat8_2013.msavi2 range=-1.0,0.5 title="MSAVI2" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_MSAVI2_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection{Infrared Percentage Vegetation Index (IPVI)}
+
+\begin{equation}
+	IPVI = \frac{NIR}{(NIR+Red)}
+\end{equation} 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the IPVI,style=mystyle,label={lst01}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=ipvi output=lsat8_2013.ipvi --overwrite
+r.colors lsat8_2013.ipvi color=haxby -e
+d.mon wx0
+d.rast lsat8_2013.ipvi
+d.legend raster=lsat8_2013.ipvi range=-1.0,1.0 title="IPVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_IPVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection{Enhanced Vegetation Index (EVI)}
+
+\begin{equation}
+EVI = 2.5 * \frac{NIR - Red}{NIR + 6.0 * Red - 7.5 * Blue + 1.0}
+\end{equation} 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the EVI,style=mystyle,label={lst01}]
+g.region raster=lsat8_2013_toar.1 -p
+i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=evi output=lsat8_2013.evi --overwrite
+r.colors lsat8_2013.evi color=elevation -e
+d.mon wx0
+d.rast lsat8_2013.evi
+d.legend raster=lsat8_2013.evi range=-1.0,1.0 title="EVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
+\end{lstlisting}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
