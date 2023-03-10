@@ -177,9 +177,9 @@ r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B5.TIF out=L8_2013_05
 r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B6.TIF out=L8_2013_06
 r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_SR_B7.TIF out=L8_2013_07
 r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_B8.TIF out=L8_2013_08
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_EMSD.TIF out=L8_2013_09 # Cirrus
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_B10.TIF out=L8_2013_10 # TIRS 1
-r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_TRAD.TIF out=L8_2013_11 # TIRS 2
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_EMSD.TIF out=L8_2013_09
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_B10.TIF out=L8_2013_10
+r.in.gdal LC08_L2SP_189056_20131220_20200912_02_T1_ST_TRAD.TIF out=L8_2013_11
 # listing the files
 g.list rast
 # preprocessing:
@@ -251,7 +251,7 @@ The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the fo
 \begin{equation}
 \begin{split}
 	GVI = -0.2848 * Blue - 0.2435 * Green - 0.5436 * Red + \\
-	0.7243 * NIR + 0.0840 * SWIR1- 0.1800 * SWI2
+	0.7243 * NIR + 0.0840 * SWIR1- 0.1800 * SWIR2
 \end{split}
 \end{equation}
 
@@ -329,6 +329,13 @@ d.rast lsat8_2013.gemi
 d.legend raster=lsat8_2013.gemi range=-0.5,1.0 title="GEMI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
 d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
 \end{lstlisting}
+
+\subsection{Normalized Difference Water Index (NDWI)}
+
+The original formula of the NDWI has been developed by \cite{McFeeters} as a ratio of Green and NIR channels: 
+\begin{equation}
+NDWI = \frac{green - NIR}{green + NIR}
+\end{equation} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -518,6 +525,126 @@ d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
 		\caption{2022}
 	\end{subfigure}%
 }\caption{GEMI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
+
+\subsection{Normalized Difference Water Index (NDWI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_NDWI_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_NDWI_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_NDWI_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_NDWI_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{NDWI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
+
+\subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_MSAVI2_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_MSAVI2_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_MSAVI2_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_MSAVI2_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{MSAVI2 computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
+
+\subsection{Infrared Percentage Vegetation Index (IPVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_IPVI_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_IPVI_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_IPVI_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_IPVI_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{IPVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+\end{figure}
+
+\subsection{Enhanced Vegetation Index (EVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_EVI_2013}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_EVI_2015}
+		\caption{2015}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_EVI_2021}
+		\caption{2021}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.5cm]{Nigeria_EVI_2022}
+		\caption{2022}
+	\end{subfigure}%
+}\caption{EVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
