@@ -96,13 +96,37 @@ d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
 # 6. Calculation of PVI (Perpendicular Vegetation Index)
 g.region raster=lsat8_2013_toar.1 -p
 i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=pvi output=lsat8_2013.pvi --overwrite
-#r.colors lsat8_2013.pvi color=byr -e
-r.colors lsat8_2013.pvi color=bgyr -e
+r.colors lsat8_2013.pvi color=byr -e
 # r.colors --help
 d.mon wx0
 d.rast lsat8_2013.pvi
 d.legend raster=lsat8_2013.pvi range=-0.1,0.3 title="PVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.02 border_color=white thin=8 -d
 d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
+
+# 7. Calculation of GEMI: Global Environmental Monitoring Index
+g.region raster=lsat8_2013_toar.1 -p
+i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=gemi output=lsat8_2013.gemi --overwrite
+r.colors lsat8_2013.gemi color=roygbiv -e
+# r.colors --help
+d.mon wx0
+d.rast lsat8_2013.gemi
+d.legend raster=lsat8_2013.gemi range=-0.5,1.0 title="GEMI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+# d.erase
+d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
+
+
+# 8. Calculation of VARI: Visible Atmospherically Resistant Index
+g.region raster=lsat8_2013_toar.1 -p
+i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 viname=vari output=lsat8_2013.vari --overwrite
+r.colors lsat8_2013.vari color=viridis -e
+# r.colors --help
+d.mon wx0
+d.rast lsat8_2013.vari
+d.legend raster=lsat8_2013.vari range=-1.0,1.0 title="VARI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+# d.erase
+d.out.file output=Nigeria_VARI_2013 format=jpg --overwrite
+
+
 #
 # RGB colour composites
 # False composite 5-4-3
