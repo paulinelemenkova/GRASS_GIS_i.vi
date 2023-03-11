@@ -66,10 +66,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Niger Delta, Nigeria}
+\Title{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Mangrove Forests in the Western Segment of Niger Delta, Nigeria}
 
 % MDPI internal command: Title for citation in the left column along the Southwestern Coast of Nigeria
-\TitleCitation{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Landscapes of Mangrove Forests in the Niger Delta, Nigeria}
+\TitleCitation{Computing Vegetation Indices from the Satellite Images Using GRASS GIS Scripts for Monitoring Mangrove Forests in the Western Segment of Niger Delta, Nigeria}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
@@ -99,12 +99,13 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 %\firstnote{Current address: Affiliation 3.} 
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{Besides, changes in urban spaces of the major cities caused by the urbanisation in this region (Onitsha, Sapele, Warri, Benin CIty and smaller villages in the Delta State) were evaluated and visualised. }
+\abstract{
+This paper addresses the image classification issue for mapping vegetation indices in mangrove forests of Niger Delta, Gulf of Guinea using scripting techniques of GRASS GIS. In the last decade, programming approaches were developed and integrated in geospatial studies. This paper proposes a GRASS GIS framework to calculate and visualise ten vegetation indices (VI) using image processing methods by \emph{i.vi}, \emph{i.landsat.toar} and other modules of GRASS GIS. The estuary of the Niger Delta in southern Nigeria is an essential hotspot of biodiversity in western coast of Africa. At the same time, recent issues of changing climate and the effects from the increasing population contribute to the vulnerability of coastal landscapes and present threats to ecosystem communities in southern Nigeria. In this paper, we prove that environmental changes in the coastal landscapes can be numerically modelled and evaluated using a time series analysis of the remote sensing data. We examined four Landsat 8-9 OLI/TIRS images covering the western segment of the Niger Delta in the Bight of Benin for years 2013, 2015, 2021 and 2022. The analysis of data showed variations in the vegetation health of the swamp forests of the Niger Delta over a decade. Variations in spectral reflectance also pointed at changes in urban spaces of the major cities (Onitsha, Sapele, Warri and Benin CIty) and smaller villages in the Delta State caused by recent urbanisation processes. Based on GRASS GIS \emph{i.vi} module, ten VI approaches are applied and mapped for the western segment of the Niger Delta estuary. The results include ten VI computed and visualised using GRASS GIS scripts: Atmospherically Resistant Vegetation Index (ARVI), Green Atmospherically Resistant Vegetation Index (GARI), Green Vegetation Index (GVI), Difference Vegetation Index (DVI), Perpendicular Vegetation Index (PVI), Global Environmental Monitoring Index (GEMI), Normalized Difference Water Index (NDWI), Second Modified Soil Adjusted Vegetation Index (MSAVI2), Infrared Percentage Vegetation Index (IPVI) and Enhanced Vegetation Index (EVI). Experimental results show changes in the vegetation health, plant  greenness and coverage based on the image analysis performed using GRASS GIS. Finally, the technical functionality of the GRASS GIS demonstrated the best performance in terms of image processing and analysis.
+}
 
 % Keywords
 \keyword{Image processing; Nigeria; West Africa; remote sensing; cartography; Niger River; Niger Delta; R language; programming; climate change} 
 
-% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 \PACS{91.10.Da; 91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs; 42.68.Wt}
 \MSC{86A30; 86-08; 86A99; 86A04}
 \JEL{Y91; Q20; Q24; Q23; Q3; Q01; R11; O44; O13; Q5; Q51; Q55; N57; C6; C61}
@@ -124,21 +125,21 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Materials and Methods}
 
-The image processing has been performed using the GRASS GIS, version 8.2.1, \href{https://grass.osgeo.org/}{https://grass.osgeo.org/}.
 %----------- subsection ----------->
-\pagebreak
+
 \subsection{Data}
+The image classification was performed based on the series of the Landsat 8-9 OLI/TIRS images for 2013, 2015, 2021 and 2022, respectively, Figure \ref{fig02}. To determine the variation in the spatial extent of the mangroves in the western segment of the Niger Delta, ten VI representing the distribution of healthy vegetation were computed to discriminate swamp forests from the other land cover types (water, urban areas, agricultural lands). To this end, the image processing has been performed using the GRASS GIS, version 8.2.1, \href{https://grass.osgeo.org/}{https://grass.osgeo.org/}. The GRASS GIS scripts were used in the 'i.vi' module which was applied for image classification along with other auxiliary modules. 
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03a.jpg}
+			\includegraphics[width=7.5cm]{Fig_02a.jpg}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03b.jpg}
+			\includegraphics[width=7.5cm]{Fig_02b.jpg}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -146,15 +147,15 @@ The image processing has been performed using the GRASS GIS, version 8.2.1, \hre
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03e.jpg}
+			\includegraphics[width=7.5cm]{Fig_02c.jpg}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Fig_03f.jpg}
+			\includegraphics[width=7.5cm]{Fig_02d.jpg}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{Landsat 8-9 OLI/TIRS images of Niger Delta in natural colour RGB values for four years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2021/12/18, (\textbf{d}) 2022/12/29}\label{fig:03}
+}\caption{Landsat 8-9 OLI/TIRS images of Niger Delta in natural colour RGB values for four years: (\textbf{a}) 2013/12/20, (\textbf{b}) 2015/12/26, (\textbf{c}) 2021/12/18, (\textbf{d}) 2022/12/29}\label{fig02}
 \end{figure}
 
 %----------- subsection ----------->
@@ -397,20 +398,24 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
+In this paper, we have applied and proposed a GRASS GIS framework for satellite image processing and analysis using Landsat 8-9 OLI/TIRS scenes for the tasks of computing VI on the western segment of Niger River Delta, southern Nigeria, the Gulf of Guinea.  Ten VI computed and visualised using GRASS GIS scripts are demonstrated as a comparative analysis of the environmental changes in the vegetation state: ARVI, GARI, GVI, DVI, PVI, GEMI, NDWI, MSAVI2, IPVI and EVI. 
+
 
 %----------- subsection ----------->
 \subsection{Difference Vegetation Index (DVI)}
+
+The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightforward to compute commpared to the NDVI, however provides less accurate results. 
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_DVI_2013}
+			\includegraphics[width=7.5cm]{Fig_03a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_DVI_2015}
+			\includegraphics[width=7.5cm]{Fig_03b}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -418,30 +423,32 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_DVI_2021}
+			\includegraphics[width=7.5cm]{Fig_03c}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_DVI_2022}
+			\includegraphics[width=7.5cm]{Fig_03d}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{DVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+}\caption{DVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig03}
 \end{figure}
 
 %----------- subsection ----------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
+The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric aerosol content and therefore corrects the image scenes for the effects from the atmospheric scattering. 
+
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_ARVI_2013}
+			\includegraphics[width=7.5cm]{Fig_04a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_ARVI_2015}
+			\includegraphics[width=7.5cm]{Fig_04b}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -449,15 +456,15 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_ARVI_2021}
+			\includegraphics[width=7.5cm]{Fig_04c}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_ARVI_2022}
+			\includegraphics[width=7.5cm]{Fig_04d}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{ARVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+}\caption{ARVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig04}
 \end{figure}
 
 %----------- subsection ----------->
@@ -467,12 +474,12 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GARI_2013}
+			\includegraphics[width=7.5cm]{Fig_05a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GARI_2015}
+			\includegraphics[width=7.5cm]{Fig_05b}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -480,30 +487,32 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GARI_2021}
+			\includegraphics[width=7.5cm]{Fig_05c}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GARI_2022}
+			\includegraphics[width=7.5cm]{Fig_05d}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{GARI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+}\caption{GARI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig05}
 \end{figure}
 
 %----------- subsection ----------->
 \subsection{Green Vegetation Index (GVI)}
 
+The GVI is useful for classifying land cover as it recognises the density and vigour plant in green vegetation (bright red areas in Figure \ref{fig06}), detects stressed plants (light blue areas in Figure \ref{fig06}) and accurately identifies wetland areas (dark areas in Figure \ref{fig06}). 
+
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GVI_2013}
+			\includegraphics[width=7.5cm]{Fig_06a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GVI_2015}
+			\includegraphics[width=7.5cm]{Fig_06b}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -511,30 +520,32 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GVI_2021}
+			\includegraphics[width=7.5cm]{Fig_06c}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_GVI_2022}
+			\includegraphics[width=7.5cm]{Fig_06d}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{GVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+}\caption{GVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig06}
 \end{figure}
 
 %----------- subsection ----------->
 \subsection{Perpendicular Vegetation Index (PVI)}
 
+The PVI index (Figure \ref{fig07}) computes the perpendicular distance of the pixel from the soil line which linearly correlates with the area covered by vegetation canopy. It corrects for the difference between soil background which works best for arid and semiarid regions. However, for Nigeria with its tropical climate and dense swamp forests, it is less effective and suitable compared to IPVI and MSAVI2 that better show the difference in state of the mangrove forests. The higher PVI values (shown as red colors) point at the effects from brighter soil background in the agricultural areas in the Edo State. The disadvantages of the PVI consists in the atmospheric effects where it performs less accurate compared to ARVI and GARI.
+
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_PVI_2013}
+			\includegraphics[width=7.5cm]{Fig_07a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_PVI_2015}
+			\includegraphics[width=7.5cm]{Fig_07b}
 		\caption{2015}
 	\end{subfigure}%
 }\\
@@ -542,15 +553,15 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_PVI_2021}
+			\includegraphics[width=7.5cm]{Fig_07c}
 		\caption{2021}
 	\end{subfigure}
 	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=7.5cm]{Nigeria_PVI_2022}
+			\includegraphics[width=7.5cm]{Fig_07d}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{PVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig:03}
+}\caption{PVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig07}
 \end{figure}
 
 
