@@ -283,7 +283,7 @@ d.out.file output=Nigeria_GARI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Green Vegetation Index (GVI)}
 
-The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the formula developed by \cite{4157507}:
+The Tasselled Cap GVI provides more detailed information on the distinct  features in landscapes such as plant canopy, water bodies and bare land or sand area. The method of Tasselled Cap performs a transformation of the original pixels in bands into a new 4D dimension with the following parameters: soil brightness index, green vegetation index (GVI), yellow stuff index, and a non-such index related to atmospheric effects \cite{Huang2002}. Of these, we used the GVI which is based on the estimation of greenness in leaves of mangrove canopies. The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the formula developed by \cite{4157507}:
 
 \begin{equation}
 \begin{split}
@@ -304,10 +304,11 @@ d.legend raster=lsat8_2013.gvi range=-1,0.7 title="GVI" title_fontsize=14 font="
 d.out.file output=Nigeria_GVI_2013 format=jpg --overwrite
 \end{lstlisting}
 
+The technique of the Tasselled Cap transformation in remote sensing domain is originally developed by \cite{KauthThomas} and performs linear processing which separates green gradient, yellow development and soil brightness of the satellite images. It is based on the conversion of the data in a set of bands into the colour composite values. In this way it modifies the values from the weighted sums of pixels in the given Landsat bands.
 %------------------------->
 \subsection{Difference Vegetation Index (DVI)}
 
-The use of DVI is based on the ratio between the NIR and Red channels \cite{Naji2018}:
+The advantage of the Difference Vegetation Index (DVI) is that is well separates soil and the vegetation biomass. However, the disadvantage is that it does not considers the difference between the spectral reflectance and radiance of soil surface caused by atmospheric effects \cite{TUCKER1979127}. The use of DVI is based on the ratio between the NIR and Red channels \cite{Naji2018}:
 
 \begin{equation}
 	DVI = (NIR - Red)
@@ -333,7 +334,7 @@ d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Perpendicular Vegetation Index (PVI)}
 
-The use of PVI is based on the formula that includes the sine and cosine of the NIR and Red channels \cite{PERRY1984169}:
+The use of PVI is based on the formula originally developed by \cite{Richardson} to monitor the productivity of range, forest, and croplands. The PVI is based on the assumption that soil reflectance supplies the background signal of vegetated surfaces. The computation of the PVI includes the sine and cosine of the NIR and Red channels using the formula \cite{PERRY1984169}:
 
 \begin{equation}
 	PVI = sin(a)NIR-cos(a)Red
