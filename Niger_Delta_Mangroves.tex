@@ -334,7 +334,13 @@ d.out.file output=Nigeria_DVI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Perpendicular Vegetation Index (PVI)}
 
-The use of PVI is based on the formula originally developed by \cite{Richardson} to monitor the productivity of range, forest, and croplands. The PVI is based on the assumption that soil reflectance supplies the background signal of vegetated surfaces. The computation of the PVI includes the sine and cosine of the NIR and Red channels using the formula \cite{PERRY1984169}:
+The use of PVI is based on the formula originally developed by \cite{Richardson} to monitor the productivity of range, forest, and croplands. Similar to a DVI, it differs in that it measures the perpendicular distance of the pixels from the soil line. Besides, it is more sensitive to atmospheric variations. The PVI is based on the assumption that soil reflectance supplies the background signal of vegetated surfaces which is why the soil line is used in the computation. 
+
+\begin{equation}
+	PVI=\frac{1}{\sqrt{a^2+1}} * (NIR - aR - b)
+\end{equation} 
+
+where \emph{a} and \emph{b} are the constants that stand for slope and gradient of the soil line. However, the embedded formula of GRASS GIS is slightly modified, because the calculation of the PVI here is made using the concept of "isovegetation". The isovegetation line shows the distribution of area covered by equal types of vegetation. Therefore, the pixels in this case are parallel to the soil line which is assigned to a=1. Hence, the constants for soil are removed and the computation of the PVI is adjusted. In this case, it includes the sine and cosine of the NIR and Red channels using the following formula \cite{PERRY1984169}:
 
 \begin{equation}
 	PVI = sin(a)NIR-cos(a)Red
@@ -380,7 +386,7 @@ d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
 
 The original formula of the NDWI has been developed by \cite{McFeeters} as a ratio of Green and NIR channels: 
 \begin{equation}
-NDWI = \frac{green - NIR}{green + NIR}
+	NDWI = \frac{green - NIR}{green + NIR}
 \end{equation} 
 
 Then we can identify the NDWI using GRASS GIS language by the following script presented in Listing \ref{lst08}:
