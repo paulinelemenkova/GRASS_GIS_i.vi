@@ -239,7 +239,7 @@ Afterwards, the data were copied as 11 Landsat bands to match the input structur
 %------------------------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
-The Atmospherically Resistant Vegetation Index (ARVI) reduces the role of atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (rain and fog) or urban air pollution (dust or smog). Initially proposed and developed for assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can be applied for the Landsat OLI/TIRS sensors since it contains necessary bands, i.e. those of wavelengths between 0.650~{\textmu}m and 0.865~{\textmu}m, which corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m) in the Landsat 8-9 OLI sensor. Additionally, the Blue band with (wavelength of 0.45-0.51~{\textmu}m in the Landsat OLI) is distracted from the Red according to the computation formula of ARVI, developed by \cite{134076,HUETE1997440}:
+The Atmospherically Resistant Vegetation Index (ARVI) is based on using bands with wavelengths between 0.650~{\textmu}m and 0.865~{\textmu}m, which corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m) in the Landsat 8-9 OLI sensor. Additionally, the Blue band with (wavelength of 0.45-0.51~{\textmu}m in the Landsat OLI) is distracted from the Red according to the computation formula of ARVI, developed by \cite{134076,HUETE1997440}:
 
 \begin{equation}
 	ARVI = \frac{NIR - (2.0*Red - Blue)}{NIR + (2.0*Red - Blue)}
@@ -258,6 +258,7 @@ d.legend raster=lsat8_2013.arvi range=-0.7,0.3 title="ARVI" title_fontsize=14 fo
 d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
 \end{lstlisting}
 
+The advantages of ARVI is that it reduces the role of atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (rain and fog) or urban air pollution (dust or smog). Initially proposed and developed for assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can be applied for the Landsat OLI/TIRS sensors since it contains necessary bands in Blue, Red and NIR bands.
 %------------------------->
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
@@ -360,6 +361,8 @@ d.out.file output=Nigeria_PVI_2013 format=jpg --overwrite
 
 \subsection{Global Environmental Monitoring Index (GEMI)}
 
+The Global Environmental Monitoring Index (GEMI) has a nonlinear nature and a more complex formula, compared to the previous indices. It is designed for global environmental monitoring from remote sensing data, which explains its refine adjustment that considers all types of vegetations. 
+
 \begin{align*}
 GEMI = \Bigl( \frac{2*((NIR * NIR)-(Red * Red)) +
        1.5*NIR+0.5*Red}{NIR + Red + 0.5} * \\
@@ -381,6 +384,8 @@ d.rast lsat8_2013.gemi
 d.legend raster=lsat8_2013.gemi range=-0.5,1.0 title="GEMI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
 d.out.file output=Nigeria_GEMI_2013 format=jpg --overwrite
 \end{lstlisting}
+
+Although GEMI is in general comparable to NDVI, it shows less sensitivity to atmospheric effects. Instead, it is influenced by the brightness of the bare soil. To these reasons, it does not work well in desert arid and semi-arid regions covered by sands, rocks and soil with sparse or no vegetation. For the case of southern Nigeria, however, GEMI works well since tropical dense forests are suitable for the performance of this index. Moreover, the decline of mangroves is well depicted using comparison of GEMI several satellite images.
 
 \subsection{Normalized Difference Water Index (NDWI)}
 
