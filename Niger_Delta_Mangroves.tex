@@ -261,16 +261,15 @@ d.out.file output=Nigeria_ARVI_2013 format=jpg --overwrite
 %------------------------->
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
-The computation of GARI is based on the formula developed by \cite{GITELSON1996289}:
+The Green Atmospherically Resistant Index (GARI) is more perceptive to a wide range of chlorophyll content in leaves of mangroves which correlates with the difference between the reflectance of Green, Red and NIR bands, because the Green band is used in the formula in addition to Red and NIR. The addition of Blue band makes it less dependent on possible atmospheric effects such as aerosol conditions. The computation of GARI is based on the formula developed by \cite{GITELSON1996289}:
 
 \begin{equation}
 	GARI = \frac{NIR - (Green - (Blue - Red))}{NIR + (Green - (Blue - Red))}
 \end{equation} 
 
-The computation of GARI in the GRASS GIS, was performed by the Listing \ref{lst03}: 
+The computation of GARI in the GRASS GIS is done according to the embedded equation and is performed by Listing \ref{lst03}: 
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI,style=mystyle,label={lst03}]
-# GARI = (nirchan - (2.0*redchan - bluechan)) / ( nirchan + (2.0*redchan - bluechan))
 g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 \
      nir=lsat8_2013_toar.5 viname=gari output=lsat8_2013.gari --overwrite
