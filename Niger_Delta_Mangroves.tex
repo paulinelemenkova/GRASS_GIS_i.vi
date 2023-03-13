@@ -415,6 +415,8 @@ d.out.file output=Nigeria_NDWI_2013 format=jpg --overwrite
 
 \subsection{Second Modified Soil Adjusted Vegetation Index (MSAVI2)}
 
+The Second Modified Soil Adjusted Vegetation Index (MSAVI2) is adjusted to provide accurate data in sparse vegetation or plant canopies with deficit of chlorophyll. Moreover, the MSAVI2 helps to identify bare soil between the seedlings during leaf development which is useful for agricultural mapping. 
+
 \begin{equation}
 	MSAVI2 = \frac{1}{2}*\Bigl(2*NIR+1-\sqrt{(2*NIR+1)^2-8*(NIR-red)}\Bigr)
 \end{equation} 
@@ -432,6 +434,8 @@ d.out.file output=Nigeria_MSAVI2_2013 format=jpg --overwrite
 \end{lstlisting}
 
 \subsection{Infrared Percentage Vegetation Index (IPVI)}
+
+The specifics of Infrared Percentage Vegetation Index (IPVI) is that it is a ratio-based computationally fast approach with values ranging from 0 to 1. As one can see from the formula, the IPVI is based on the ration of Red/NIR. in this was it is similar and linearly equivalent to the NDVI, yet more straightforward \cite{CRIPPEN199071}:
 
 \begin{equation}
 	IPVI = \frac{NIR}{(NIR+Red)}
@@ -451,11 +455,13 @@ d.out.file output=Nigeria_IPVI_2013 format=jpg --overwrite
 
 \subsection{Enhanced Vegetation Index (EVI)}
 
+The Enhanced Vegetation Index (EVI) uses NIR, Red and Blue bands and is designed to quantify vegetation greenness. Its extended formula includes the atmospheric conditions and considers the effects from the canopy background. The EVI is well adjusted to identifies areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}.
+
 \begin{equation}
 EVI = 2.5 * \frac{NIR - Red}{NIR + 6.0 * Red - 7.5 * Blue + 1.0}
 \end{equation} 
 
-The EVI was computed and visialized by the GRASS GIS using Listing \ref{lst11}:
+The EVI was computed and visialised by the GRASS GIS using Listing \ref{lst11}:
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the EVI,style=mystyle,label={lst11}]
 g.region raster=lsat8_2013_toar.1 -p
