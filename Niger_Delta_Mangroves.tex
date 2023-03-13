@@ -389,12 +389,19 @@ Although GEMI is in general comparable to NDVI, it shows less sensitivity to atm
 
 \subsection{Normalized Difference Water Index (NDWI)}
 
-The original formula of the NDWI has been developed by \cite{McFeeters} as a ratio of Green and NIR channels: 
+The values of the Normalized Difference Water Index (NDWI) are strongly dependent on the water content in the landscapes. Hence, the NDWI serves as an accurate indicator of the water areas and water bodies (rivers, lakes, estuaries, deltas). The NDWI is derived from the NIR and Green bands using the original formula developed by \cite{McFeeters} as a ratio of Green and NIR channels: 
+
 \begin{equation}
 	NDWI = \frac{green - NIR}{green + NIR}
 \end{equation} 
 
-Then we can identify the NDWI using GRASS GIS language by the following script presented in Listing \ref{lst08}:
+Another formula of the NDWI is proposed by \cite{GAO1996257}, which is a different index yet having the same name, since both indices are developed simultaneously in 1996. The NDWI by \cite{GAO1996257} is focused on identification of water content in the plant leaves: 
+
+\begin{equation}
+	NDWI = \frac{NIR - SWIR}{NIR + SWIR}
+\end{equation} 
+
+However, this is more actual for the semi-arid and arid regions covered by savannah. In this study, we used the NDWI proposed by \cite{McFeeters} using Green and NIR bands for detecting areas covered by Niger Delta, tributaries and lagoon.  Using the embedded algorithm in the GRASS GIS we can identify the NDWI using its syntax by the script showed in Listing \ref{lst08}:
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDWI,style=mystyle,label={lst08}]
 g.region raster=lsat8_2013_toar.1 -p
