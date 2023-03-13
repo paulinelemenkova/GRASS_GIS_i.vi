@@ -340,7 +340,9 @@ The use of PVI is based on the formula that includes the sine and cosine of the 
 	PVI = sin(a)NIR-cos(a)Red
 \end{equation} 
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the PVI,style=mystyle,label={lst01}]
+Using the syntax of GRASS GIS, we define the PVI as follows in Listing \ref{lst06}:
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the PVI,style=mystyle,label={lst06}]
 g.region raster=lsat8_2013_toar.1 -p
 i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=pvi output=lsat8_2013.pvi --overwrite
 r.colors lsat8_2013.pvi color=bgyr -e
@@ -361,7 +363,9 @@ GEMI = \Bigl( \frac{2*((NIR * NIR)-(Red * Red)) +
        \frac{Red - 0.125}{1 - Red}
 \end{align*}
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GEMI,style=mystyle,label={lst01}]
+The algorithm for computing and plotting the GEMI is presented in Listing \ref{lst07}:
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GEMI,style=mystyle,label={lst07}]
 # Calculation of GEMI: Global Environmental Monitoring Index
 g.region raster=lsat8_2013_toar.1 -p
 i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=gemi output=lsat8_2013.gemi --overwrite
@@ -379,7 +383,9 @@ The original formula of the NDWI has been developed by \cite{McFeeters} as a rat
 NDWI = \frac{green - NIR}{green + NIR}
 \end{equation} 
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDWI,style=mystyle,label={lst01}]
+Then we can identify the NDWI using GRASS GIS language by the following script presented in Listing \ref{lst08}:
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the NDWI,style=mystyle,label={lst08}]
 g.region raster=lsat8_2013_toar.1 -p
 i.vi green=lsat8_2013_toar.3 nir=lsat8_2013_toar.5 viname=ndwi output=lsat8_2013.ndwi --overwrite
 r.colors lsat8_2013.ndwi color=viridis -e
@@ -395,7 +401,9 @@ d.out.file output=Nigeria_NDWI_2013 format=jpg --overwrite
 	MSAVI2 = \frac{1}{2}*\Bigl(2*NIR+1-\sqrt{(2*NIR+1)^2-8*(NIR-red)}\Bigr)
 \end{equation} 
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the MSAVI2,style=mystyle,label={lst01}]
+The MSAVI2 is determined using GRASS GIS i.vi module using Listing \ref{lst09}:
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the MSAVI2,style=mystyle,label={lst09}]
 g.region raster=lsat8_2013_toar.1 -p
 i.vi red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=msavi2 output=lsat8_2013.msavi2 --overwrite
 r.colors lsat8_2013.msavi2 color=soilmoisture -e
