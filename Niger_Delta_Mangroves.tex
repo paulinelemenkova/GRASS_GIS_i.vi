@@ -239,13 +239,15 @@ Afterwards, the data were copied as 11 Landsat bands to match the input structur
 %------------------------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
-The Atmospherically Resistant Vegetation Index (ARVI) reduces the role of atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (rain and fog) or urban air pollution (dust or smog). Initially proposed and developed for assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can be applied for the Landsat OLI/TIRS sensors since it contains necessary bands, i.e. those of wavelengths between 0.650~{\textmu}m and 0.865~{\textmu}m, which corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m) in the Landsat 8-9 OLI sensor. The computation of ARVI is based on the formula developed by \cite{134076,HUETE1997440}:
+The Atmospherically Resistant Vegetation Index (ARVI) reduces the role of atmospheric scattering that affects the images. Such effects are caused by the aerosols of both natural origin (rain and fog) or urban air pollution (dust or smog). Initially proposed and developed for assessment of vegetation from the Earth Observing System (EOS) Moderate Resolution Imaging Spectroradiometer (MODIS) sensor, ARVI can be applied for the Landsat OLI/TIRS sensors since it contains necessary bands, i.e. those of wavelengths between 0.650~{\textmu}m and 0.865~{\textmu}m, which corresponds to the Bands Red (0.64-0.67~{\textmu}m) and NIR (0.85-0.88 ~{\textmu}m) in the Landsat 8-9 OLI sensor. Additionally, the Blue band with (wavelength of 0.45-0.51~{\textmu}m in the Landsat OLI) is distracted from the Red according to the computation formula of ARVI, developed by \cite{134076,HUETE1997440}:
 
 \begin{equation}
 	ARVI = \frac{NIR - (2.0*Red - Blue)}{NIR + (2.0*Red - Blue)}
 \end{equation}
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the ARVI,style=mystyle,label={lst01}]
+In the GRASS GIS, the ARVI was computed using the Listing \ref{lst02} as follows: 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the ARVI,style=mystyle,label={lst02}]
 g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 \
        viname=arvi output=lsat8_2013.arvi --overwrite
@@ -265,7 +267,9 @@ The computation of GARI is based on the formula developed by \cite{GITELSON19962
 	GARI = \frac{NIR - (Green - (Blue - Red))}{NIR + (Green - (Blue - Red))}
 \end{equation} 
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI,style=mystyle,label={lst01}]
+The computation of GARI in the GRASS GIS, was performed by the Listing \ref{lst03}: 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GARI,style=mystyle,label={lst03}]
 # GARI = (nirchan - (2.0*redchan - bluechan)) / ( nirchan + (2.0*redchan - bluechan))
 g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 \
@@ -289,7 +293,9 @@ The computation of Tasselled Cap Green Vegetation Index (GVI) is based on the fo
 \end{split}
 \end{equation}
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GVI,style=mystyle,label={lst01}]
+We have Listing \ref{lst04} used for the computation of GVI:
+ 
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the GVI,style=mystyle,label={lst04}]
 g.region raster=lsat8_2013_toar.3 -p
 i.vi blue=lsat8_2013_toar.2 green=lsat8_2013_toar.3 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 band5=lsat8_2013_toar.6 band7=lsat8_2013_toar.7 viname=gvi output=lsat8_2013.gvi --overwrite
 r.colors.stddev lsat8_2013.gvi
@@ -313,7 +319,9 @@ This is the original formula used later in a modified version for computing the 
 	NDVI = \frac{(NIR - Red)}{(NIR + Red)}
 \end{equation}
 
-\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the DVI,style=mystyle,label={lst01}]
+The above formulae are embedded in the function 'dvi' used when computing the DVI index. This is done by Listing \ref{lst05} used for the calculation of DVI as follows:
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script for computing the DVI,style=mystyle,label={lst05}]
 g.region raster=lsat8_2013_toar.1 -p
 i.vi blue=lsat8_2013_toar.2 red=lsat8_2013_toar.4 nir=lsat8_2013_toar.5 viname=dvi output=lsat8_2013.dvi --overwrite
 r.colors lsat8_2013.dvi color=bgyr -e
