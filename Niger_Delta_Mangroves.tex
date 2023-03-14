@@ -455,7 +455,7 @@ d.out.file output=Nigeria_IPVI_2013 format=jpg --overwrite
 
 \subsection{Enhanced Vegetation Index (EVI)}
 
-The Enhanced Vegetation Index (EVI) uses NIR, Red and Blue bands and is designed to quantify vegetation greenness. Its extended formula includes the atmospheric conditions and considers the effects from the canopy background. The EVI is well adjusted to identifies areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}.
+The Enhanced Vegetation Index (EVI) uses NIR, Red and Blue bands and is designed to quantify vegetation greenness. Its extended formula includes the atmospheric conditions and considers the effects from the canopy background. The EVI is well adjusted to identifies areas with dense vegetation which is suitable for mangrove mapping \cite{HUETE2002195}. Its values are ranging from -1 to +1, similar to the NDVI, with the diapason indicating healthy vegetation lying between 0.2 and 0.8. 
 
 \begin{equation}
 EVI = 2.5 * \frac{NIR - Red}{NIR + 6.0 * Red - 7.5 * Blue + 1.0}
@@ -476,12 +476,12 @@ d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
 \section{Results}
-The results of the Landsat 8-9 image processing show that the proposed GRASS GIS framework of scripting methods is effective for mapping VI for comparative assessment of vegetation and environmental monitoring. In this section ,we evaluate the approaches of various VI and their results visualised and compared on several years in the target region of the western segment of the Niger Delta. 
+The results of the Landsat 8-9 image processing show that the proposed GRASS GIS framework of scripting methods is effective for mapping VI for comparative assessment of vegetation and environmental monitoring. In this section, we evaluate the approaches of various VI and their results visualised and compared on several years in the target region of the western segment of the Niger Delta. The sidewise histogram placed on the left of the legend in each of the image aims to show the data distribution with the area of the most densely concentrated values within the range of each index.
 
 %----------- subsection ----------->
 \subsection{Difference Vegetation Index (DVI)}
 
-The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightforward to compute commpared to the NDVI, however provides less accurate results. 
+The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightforward to compute compared to the NDVI, however provides less accurate results. The DVI is sensitive to the total content of vegetation and density of canopy, moreover, it well distinguishes between the areas of soil and vegetation in general and identifies urban areas.
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -508,8 +508,10 @@ The DVI (Figure \ref{fig03}) is a slope-based type of VI which is more straightf
 			\includegraphics[width=7.5cm]{Fig_03d}
 		\caption{2022}
 	\end{subfigure}%
-}\caption{DVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig03}
+}\caption{DVI from the Landsat 8-9 OLI/TIRS of Niger Delta: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig03}
 \end{figure}
+
+The majority of values for 2013 are located within the range of 0.06 to 0.18, that is, values around zero values indicate bare soil and positive values stand for vegetation canopies, while values below zero show water bodies. The values of 2015  show similar data range with a slight increase of upper values towards 0.20. The distribution of mangrove swamps is visible as large blue-coloured spot in the left low corner of the image. The comparison of several images of 2013 and 2015 to 2021 and 2022 shows the decrease in this areas with mangroves replaced by the values dominated by bare soils other types of vegetation (coloured by the inclusions of green).
 
 %----------- subsection ----------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
@@ -576,6 +578,7 @@ The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric ae
 \end{figure}
 
 %----------- subsection ----------->
+\pagebreak
 \subsection{Green Vegetation Index (GVI)}
 
 The GVI is useful for classifying land cover as it recognises the density and vigour plant in green vegetation (bright red areas in Figure \ref{fig06}), detects stressed plants (light blue areas in Figure \ref{fig06}) and accurately identifies wetland areas (dark areas in Figure \ref{fig06}). 
@@ -609,9 +612,10 @@ The GVI is useful for classifying land cover as it recognises the density and vi
 \end{figure}
 
 %----------- subsection ----------->
+\pagebreak
 \subsection{Perpendicular Vegetation Index (PVI)}
 
-The PVI index (Figure \ref{fig07}) computes the perpendicular distance of the pixel from the soil line which linearly correlates with the area covered by vegetation canopy. It corrects for the difference between soil background which works best for arid and semiarid regions. However, for Nigeria with its tropical climate and dense swamp forests, it is less effective and suitable compared to IPVI and MSAVI2 that better show the difference in state of the mangrove forests. The higher PVI values (shown as red colors) point at the effects from brighter soil background in the agricultural areas in the Edo State. The disadvantages of the PVI consists in the atmospheric effects where it performs less accurate compared to ARVI and GARI.
+The distance-based PVI index (Figure \ref{fig07}) computes the perpendicular distance of the pixel from the soil line which linearly correlates with the area covered by vegetation canopy. The higher PVI values (shown as red colours) point at the effects from brighter soil background in the agricultural areas in the Edo State. According to the sidewise histograms, the majority of values for 2013 roughly range from 0.10 to 0.22, for 2015 -- from 0.06 to 0.18; for 2021 -- from 0.05 to 0.18 with a less distinct peak; for 2022 -- from 0.06 to 0.22. 
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -641,11 +645,12 @@ The PVI index (Figure \ref{fig07}) computes the perpendicular distance of the pi
 }\caption{PVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig07}
 \end{figure}
 
+The disadvantages of the PVI consists in the atmospheric effects where it performs less accurate compared to ARVI and GARI. We can see the trend to broaden diapason of values with inclusion of lower values; the green areas of mangrove swamps falls between values of 0.20 to 0.30 with other types of vegetation (rain forests and woodlands) covering the higher values from 0.30 to 0.80. The decline in mangrove forests is visible in the decrease of dark blue-coloured areas in the lower left segment of the image. The PVI corrects for the difference between soil background which works best for arid and semiarid regions. However, for Nigeria with its tropical climate and dense swamp forests, it is less effective and suitable compared to IPVI and MSAVI2 that better show the difference in state of the mangrove forests. Besides, the PVI-index, is strongly affected by the atmospheric effects which are significant for this region, since southern Nigeria is located in the wet equatorial climate with mean annual temperature of 26.9°C and high relative humidity above 88\% (for Lagos). It is also characterised by high cloudiness throughout the country. 
 
 %----------- subsection ----------->
 \subsection{Global Environmental Monitoring Index (GEMI)}
 
-The visualised GEMI in Figure \ref{fig08} shows the discrimination between the major vegetation classes and other land cover areas: water bodies (dark purple areas of the Bight of Benin and the Niger River with its tributaries), the landscapes of the mangrove forests (lilac colour), fresh water swamps (cyan colour) and rain forests near the area of the Benin City (green colour), and woodlands with tall grass savannah (bright red colour). 
+The visualised GEMI in Figure \ref{fig08} shows the discrimination between the major vegetation classes and other land cover areas: water bodies (dark purple areas of the Bight of Benin and the Niger River with its tributaries), the landscapes of the mangrove forests (lilac colour), fresh water swamps (cyan colour) and rain forests near the area of the Benin City (green colour), and woodlands with tall grass savannah (bright red colour). According to the sidewise histograms, the majority of values for 2013 roughly range from 0.40 to 0.60, for 2015 -- from 0.35 to 0.60; for 2021 -- from 0.32 to 0.62; for 2022 -- from 0.30 to 0.70. 
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -674,6 +679,8 @@ The visualised GEMI in Figure \ref{fig08} shows the discrimination between the m
 	\end{subfigure}%
 }\caption{GEMI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig08}
 \end{figure}
+
+GEMI corrects the computation for atmospheric and soil-related changes, mostly in the areas where bare soil is presented, which is identified by the dark pixels on the images. Hence, the computation of GEMI we indicates the dynamics in vegetation activity and the discrimination between the wetlands and dry lands, with well distinguished urban areas (dark blue) separated from the natural landscapes (red colour), water bodies (dark lilac colour), mangroves with fresh water swamps (light purple) and rainforests (cyan colour). The sparsely vegetation areas and agricultural fields are coloured by yellow to orange hues, while the exposed surfaces are coloured green.
 
 \subsection{Normalized Difference Water Index (NDWI)}
 
@@ -735,7 +742,10 @@ The visualised GEMI in Figure \ref{fig08} shows the discrimination between the m
 }\caption{MSAVI2 computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig10}
 \end{figure}
 
+\pagebreak
 \subsection{Infrared Percentage Vegetation Index (IPVI)}
+
+The distinct feature of the IPVI (Figure \ref{fig11}) consists in its always positive values that range from 0 to +1, unlike the diapason of -1 to +1 for the NDVI and other indices. Specifically, according to the histogram, for the year 2013, the majority of values of IPVI range from 0.50 to 0.70; for 2015 -- from 0.50 to 0.80 wit ha more sharp increase in values; fro 2021 -- from 0.70 to 0.90 and for 2022 - from 0,60 to 0.90. Thus, we can see the trend of increasing higher values that indicate rainforests while the area of mangroves diminishes. The mangroves are depicted as dark blue colours, gradually replaced by the areas of light green colour when comparing the data for 2013 with other years and 2022, Figure \ref{fig11}.
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -764,6 +774,8 @@ The visualised GEMI in Figure \ref{fig08} shows the discrimination between the m
 	\end{subfigure}%
 }\caption{IPVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig11}
 \end{figure}
+
+Although the IPVI is functionally similar to the NDVI, it is better adjusted for detection of vegetation in small villages and urban spaces due to the more fine gradation of positive values. Moreover, the IPVI enables to better identify smaller spots of urban vegetation coverage as well as mangrove wetlands in the Niger Delta. Further, the IPVI is well adjusted for classifying urban ecosystems since the areas of main cities in the study area are distinguishable from the nature vegetation: Warri, Onitsha and Benin City as the largest cities in the study area, as well as minor villages such as Agbor, Sapele and Adanisievbe villages in Delta State.
 
 \subsection{Enhanced Vegetation Index (EVI)}
 
@@ -799,7 +811,7 @@ The visualised GEMI in Figure \ref{fig08} shows the discrimination between the m
 \pagebreak
 \section{Discussion}
 
-The results obtained from the satellite image processing and computing of the VI for assessing mangrove distribution shows that MSAVI2 (Figure \ref{fig10}) and GVI (Figure \ref{fig06}) indices ranked the highest with the most accurate presented areas of mangrove fields while EVI (Figure \ref{fig12}) and GEMI (Figure \ref{fig08}) were judged to rank the lowest. The changes in mangrove fields for the four different time periods estimated by the atmospherically adjusted indices ARVI and GARI are presented in Figure \ref{fig04} and Figure \ref{fig05} showing the VI corrected for the atmospheric effects. Here the distribution of the mangrove fields (showed by the light orange colours) recorded the highest value in 2013 while the lowest value in 2022 due to the declined area of distribution, as discussed above. The  DVI (Figure \ref{fig03}) and PVI (Figure \ref{fig07}) indices demonstrated the comparable results with visible reduction of mangroves, showed as the reduced area of blue in both the PVI and DVI. The NDWI (Figure \ref{fig09}) and the IPVI (Figure \ref{fig11}) also highlighted the decline of mangrove swamps as areas in the lower left segment of the images coloured by yellow green for the NDWI and light blue for the IPVI.
+The results obtained from the satellite image processing and computing of the VI for assessing mangrove distribution shows that MSAVI2 (Figure \ref{fig10}) and GVI (Figure \ref{fig06}) indices ranked the highest with the most accurate presented areas of mangrove fields while EVI (Figure \ref{fig12}) and GEMI (Figure \ref{fig08}) were judged to rank the lowest. The changes in mangrove fields for the four different time periods estimated by the atmospherically adjusted indices ARVI and GARI are presented in Figure \ref{fig04} and Figure \ref{fig05} showing the VI corrected for the atmospheric effects. Here the distribution of the mangrove fields (showed by the light orange colours) recorded the highest value in 2013 while the lowest value in 2022 due to the declined area of distribution, as discussed above. The  DVI (Figure \ref{fig03}) and PVI (Figure \ref{fig07}) indices demonstrated the comparable results with visible reduction of mangroves, showed as the reduced area of blue in both the PVI and DVI. Nevertheless, the use of DVI is less effective for mapping mangroves and densely vegetated areas of tropical forests, since this index is better shows urban areas. The NDWI (Figure \ref{fig09}) and the IPVI (Figure \ref{fig11}) also highlighted the decline of mangrove swamps as areas in the lower left segment of the images coloured by yellow green for the NDWI and light blue for the IPVI.
 
 The results of the classified images are also confirmed by the existing studies on changes in mangrove habitats in southern Nigeria reporting the environmental degradation \cite{BAMIDELE2023103274,TOBORE2022158}. For instance, \cite{Godstime2007} confirms the losses in mangroves in southern Nigeria since mid-1980s through early 2000s due to urbanization, dredging, and oil and gas industrial activities. The effects from urbanisation on deforestation are also reported in other relevant works \cite{AyanladeDrake,su141811289} and reflected in undertaken measures on creating sustainable green infrastructure \cite{ADEGUN2021e01044}. The environmental mapping of the coastal landscapes of the Niger River Delta proposed and presented above using GRASS GIS has provided the capability to integrate remote sensing multi-temporal data covering target region in southern Nigeria in conjunction with scripting techniques. In spite of their environmental value, mangrove forests along the West African coasts are subject to a range of natural threats. 
 
