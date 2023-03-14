@@ -686,6 +686,8 @@ GEMI corrects the computation for atmospheric and soil-related changes, mostly i
 
 \subsection{Normalized Difference Water Index (NDWI)}
 
+Identification of vegetation biomass relies on the contrast between soil and vegetation spectral reflectance. Therefore, NIR and Red wavelengths are surpass other channels of Landsat for discrimination of green canopies. 
+
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
@@ -747,7 +749,8 @@ The general diapason of values of MSAVI2 Figure \ref{fig10} ranges from -1 to 1,
 }\caption{MSAVI2 computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig10}
 \end{figure}
 
-\pagebreak
+In contrast to SAVI, MSAVI reduces the effects from the bare soil which is especially actual for the agricultural areas. Thus, it presents the improved version of the Soil Adjusted Vegetation Index (SAVI). In turn, SAVI adjusts values in areas with sparse vegetation coverage and low density of plant canopy, which is helps to indicates areas with decreased vegetation and or high deforestation rates. Since MSAVI2 uses the combination of the ratio of NIR (wavelength 0.85-0.88 mm) and Red (wavelength 0.64-0.67) where the values reflect the amount of chlorophyll presented in the plant canopy, it is suitable for estimating biomass, grass/plant canopy or leaf area index, because healthy moist vegetation of mangroves reflects high in NIR spectrum while absorbs more in Red. The contrast between these values enables to highlight the areas of distribution of mangroves.
+
 \subsection{Infrared Percentage Vegetation Index (IPVI)}
 
 The distinct feature of the IPVI (Figure \ref{fig11}) consists in its always positive values that range from 0 to +1, unlike the diapason of -1 to +1 for the NDVI and other indices. Specifically, according to the histogram, for the year 2013, the majority of values of IPVI range from 0.50 to 0.70; for 2015 -- from 0.50 to 0.80 wit ha more sharp increase in values; fro 2021 -- from 0.70 to 0.90 and for 2022 - from 0,60 to 0.90. Thus, we can see the trend of increasing higher values that indicate rainforests while the area of mangroves diminishes. The mangroves are depicted as dark blue colours, gradually replaced by the areas of light green colour when comparing the data for 2013 with other years and 2022, Figure \ref{fig11}.
@@ -867,6 +870,7 @@ NDVI & Normalized Difference Vegetation Index \\
 NDWI & Normalized Difference Water Index \\
 NIR & Near Infrared \\
 PVI & Perpendicular Vegetation Index \\
+SAVI & Soil Adjusted Vegetation Index \\ 
 \end{tabular}
 }
 
