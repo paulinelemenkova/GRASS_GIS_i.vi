@@ -516,7 +516,7 @@ The majority of values for 2013 are located within the range of 0.06 to 0.18, th
 %----------- subsection ----------->
 \subsection{Atmospherically Resistant Vegetation Index (ARVI)}
 
-The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric aerosol content and therefore corrects the image scenes for the effects from the atmospheric scattering. 
+The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric aerosol content and therefore corrects the image scenes for the effects from the atmospheric scattering. The examination of the sideway histograms to the left of the legends of the images in Figure \ref{fig04} shows various values ranging for the years 2013, 2015, 2021 and 2022. The histogram for the year 2013 shows a classic bell-shaped data distribution with values ranging from -0.20 to +0.20 distributed equally on the histogram with a prominent mound in the centre and identical tapering to the left and right flings of the histogram. The data for 2015 are distributed from -0.10 to +0.60, thus showing a more oblique data distribution with more data within positive interval. The data for 2021 show variation with the diapason from -0.20 to 0.80 and the data for 2022 -- from 0.00 to 0.85 with residuals in the negative values that indicate water areas.
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -546,11 +546,12 @@ The ARVI (Figure \ref{fig04}) is designed for the regions of high atmospheric ae
 }\caption{ARVI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig04}
 \end{figure}
 
+As mentioned above, the advantages of using Atmospherically resistant vegetation index (ARVI) for Nigeria is that it reduces the impacts of aerosols such as such as rain, fog, dust, smoke, or air pollution. This is actual for Nigeria where image can be misinterpreted. The distortion of the images can be caused by the atmospheric scattering due to high humidity (around 80\% all year throughout for southern Nigeria).
+
 %----------- subsection ----------->
-\pagebreak
 \subsection{Green Atmospherically Resistant Vegetation Index (GARI)}
 
-The results of the computed Green Green Atmospherically Resistant Vegetation Index (GARI) rely on the estimated chlorophyll content in plants which is linked to photosynthetic activity. Therefore, this index demonstrates the higher positive values in the areas with healthy and dense vegetation canopies which is related to an increase in photosynthetic activity of leaves, while negative values indicate water areas with a sharp peak in the histogram shape. For 2013, the majority of positive values range from 0.15 to 0.45, for 2015 -- from 0.30 to 0.90 with a more gentle gradual shape of histogram; for 2021 -- the histogram has a rather narrow view with values varying from 0.35 to 0.75, and for 2022 -- from 0.20 to 0.80. Such variations illustrate changes in vegetation coverage and greenness of canopies.
+The results of the computed Green Atmospherically Resistant Vegetation Index (GARI) rely on the estimated chlorophyll content in plants which is linked to photosynthetic activity. Therefore, this index demonstrates the higher positive values in the areas with healthy and dense vegetation canopies which is related to an increase in photosynthetic activity of leaves, while negative values indicate water areas with a sharp peak in the histogram shape. For 2013, the majority of positive values range from 0.15 to 0.45, for 2015 -- from 0.30 to 0.90 with a more gentle gradual shape of histogram; for 2021 -- the histogram has a rather narrow view with values varying from 0.35 to 0.75, and for 2022 -- from 0.20 to 0.80. Such variations illustrate changes in vegetation coverage and greenness of canopies.
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -579,6 +580,8 @@ The results of the computed Green Green Atmospherically Resistant Vegetation Ind
 	\end{subfigure}%
 }\caption{GARI computed from the Landsat 8-9 OLI/TIRS images of Niger Delta for four years: (\textbf{a}) 2013, (\textbf{b}) 2015 (\textbf{c}) 2021, (\textbf{d}) 2022.}\label{fig05}
 \end{figure}
+
+GARI is perceptive to nuances of chlorophyll content in plants, while it is less sensitive to atmospheric effects such as aerosol through rigorous optimization of the algorithm, compared to the NDVI, since it is based on the green, blue and the NIR bands. Moreover, GARI is sensitive to the vegetation fraction in the canopy as can be seen in the interspersed pattern of diverse colours which represent different values of the index. As a development of present study, GARI can be further applied for estimation of other biophysical properties of mangrove canopy such as leaf area index, ratio of absorbed photosynthetically active radiation and net primary production for environmental monitoring of the Niger Delta.
 
 %----------- subsection ----------->
 \subsection{Green Vegetation Index (GVI)}
@@ -616,7 +619,7 @@ The GVI is useful for classifying land cover as it recognises the density and vi
 The reasons for the decline of mangroves areas include logging, in particular firewood activities, as well as farming and fishing. Besides, the effects from oil exploration and related engineering works (dredging) also contribute to the decline of mangroves. The expansion of urban areas and related air pollution as well as the effects from climate changes also create the negative factors and contribute to the gradual extinction of mangroves.
 
 %----------- subsection ----------->
-\pagebreak
+
 \subsection{Perpendicular Vegetation Index (PVI)}
 
 The distance-based PVI index (Figure \ref{fig07}) computes the perpendicular distance of the pixel from the soil line which linearly correlates with the area covered by vegetation canopy. The higher PVI values (shown as red colours) point at the effects from brighter soil background in the agricultural areas in the Edo State. According to the sidewise histograms, the majority of values for 2013 roughly range from 0.10 to 0.22, for 2015 -- from 0.06 to 0.18; for 2021 -- from 0.05 to 0.18 with a less distinct peak; for 2022 -- from 0.06 to 0.22. 
