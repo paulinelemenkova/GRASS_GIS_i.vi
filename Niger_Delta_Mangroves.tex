@@ -195,14 +195,14 @@ The Landsat 8-9 OLI/TIRS data were used to monitor the degree of degradation of 
 			\toprule
 			\textbf{Date} & \textbf{Spacecraft} & \textbf{Landsat Product ID} & \textbf{Scene ID} & \textbf{Cloudiness} \\
 			\midrule
-			2013/12/20 & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20131220\_20200912\_02\_T1} & \textcolor{red}{LC81750422016313LGN01} & \textcolor{red}{0.31} \\
-			2015/12/26 & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20151226\_20200908\_02\_T1} & \textcolor{red}{LC81750422016313LGN01} & \textcolor{red}{0.31} \\
-			2021/12/18 & Landsat 8 & \makecell{LC09\_L1TP\_189056\_20211218\_20220121\_02\_T1} & \textcolor{red}{LC81750422016313LGN01} & \textcolor{red}{0.31} \\
-			2022/12/29 & Landsat 9 & \makecell{LC08\_L1TP\_189056\_20221229\_20230104\_02\_T1} & \textcolor{red}{LC81750422016313LGN01} & \textcolor{red}{0.31} \\
+			2013/12/20 & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20131220\_20200912\_02\_T1} & LC81890562013354LGN01 & 6.46 \\
+			2015/12/26 & Landsat 8 & \makecell{LC08\_L1TP\_189056\_20151226\_20200908\_02\_T1} & LC81890562015360LGN01 & 17.54 \\
+			2021/12/18 & Landsat 8 & \makecell{LC09\_L1TP\_189056\_20211218\_20220121\_02\_T1} & LC91890562021352LGN01 & 32.32 \\
+			2022/12/29 & Landsat 9 & \makecell{LC08\_L1TP\_189056\_20221229\_20230104\_02\_T1} & LC81890562022363LGN00 & 0.59 \\
 			\bottomrule
 		\end{tabularx}
 	\end{adjustwidth}
-	\noindent{\footnotesize{\textsuperscript{1} The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Path/row parameters common for all the images: \textcolor{red}{175/42}. Coverage: Niger Delta, southern Nigeria, Bight of Benin. Image source: USGS}}
+	\noindent{\footnotesize{\textsuperscript{1} The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Path/row parameters common for all the images: 189/56. Coverage: Niger Delta, southern Nigeria, Bight of Benin. Image source: USGS}}
 \end{table}
 
 The images were imported into the GRASS GIS  software and processed for data analysis and visualization using embedded modules of satellite images and raster data processing. While the Landsat 8-9 OLI/TIRS images formed the dataset for computing and visualising the VI, the GEBCO/SRTM raster data were used for visualising the base map for this study. To determine the variation in the spatial extent of the mangroves in the western segment of the Niger Delta, ten VI representing the distribution of healthy vegetation were computed to discriminate swamp forests from the other land cover types (water, urban areas, agricultural lands). To this end, the image processing has been performed using the GRASS GIS, version 8.2.1, \href{https://grass.osgeo.org/}{https://grass.osgeo.org/}. The GRASS GIS scripts were used in the 'i.vi' module which was applied for image classification along with auxiliary modules. 
