@@ -144,9 +144,9 @@ r.colors lsat8_2013.ipvi color=haxby -e
 # r.colors --help
 d.mon wx0
 d.rast lsat8_2013.ipvi
-d.legend raster=lsat8_2013.ipvi range=-1.0,1.0 title="IPVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.legend raster=lsat8_2013.ipvi range=-1.0,1.0 title="IPVI-2013" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
 # d.erase
-d.out.file output=Nigeria_IPVI_2013 format=jpg --overwrite
+d.out.file output=Angola_IPVI_2013 format=jpg --overwrite
 #
 # 11. Calculation of EVI: Enhanced Vegetation Index
 g.region raster=lsat8_2013_toar.1 -p
@@ -155,9 +155,9 @@ r.colors lsat8_2013.evi color=elevation -e
 # r.colors --help
 d.mon wx0
 d.rast lsat8_2013.evi
-d.legend raster=lsat8_2013.evi range=-1.0,1.0 title="EVI" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
+d.legend raster=lsat8_2013.evi range=-1.0,1.0 title="EVI-2013" title_fontsize=14 font="Helvetica" fontsize=12 -t -b bgcolor=white label_step=0.1 border_color=white thin=8 -d
 # d.erase
-d.out.file output=Nigeria_EVI_2013 format=jpg --overwrite
+d.out.file output=Angola_EVI_2013 format=jpg --overwrite
 
 
 # RGB colour composites
